@@ -20,8 +20,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Developer")
 	FString DeveloperNotes;
 
+	/* Name of the speaker to display */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Display")
+	FName SpeakerName;
+
 	/* Text to display */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Text")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Display")
 	FString Text;
 
 	/* AkEvent to post on play */
