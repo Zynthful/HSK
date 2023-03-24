@@ -4,7 +4,24 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "Dialogue/DialogueEnums.h"
 #include "HSKDialogueDataAsset.generated.h"
+
+class UHSKDialogueSpeakerData;
+
+USTRUCT(BlueprintType)
+struct FHSKDialogueSpeaker
+{
+	GENERATED_BODY()
+
+	/* Data asset of the speaker */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UHSKDialogueSpeakerData* SpeakerData;
+
+	/* If set, will override the speaker name that is in SpeakerData */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FName SpeakerNameOverride;
+};
 
 /**
  * 
@@ -17,26 +34,30 @@ class HSK_API UHSKDialogueDataAsset : public UDataAsset
 public:
 
 	/* Developer Notes */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Developer")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Developer")
 	FString DeveloperNotes;
 
-	/* Name of the speaker to display */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Display")
-	FName SpeakerName;
+	/* Struct containing info about the speaker */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Display")
+	FHSKDialogueSpeaker SpeakerInfo;
 
 	/* Text to display */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Display")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Display")
 	FString Text;
 
+	/* Mood/tone of the line being said */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Display")
+	TEnumAsByte<EMood> Mood;
+
 	/* AkEvent to post on play */
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Sound")
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Sound")
 	//UAkAudioEvent* PlayAkEvent;
 
 	/* Effect on music to apply on play */
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Sound")
-	//TEnumAsByte<EEffectOnMusic> EffectOnMusic;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Sound")
+	FEffectOnMusic EffectOnMusic;
 	
 	/* AkStates to set on play*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Sound")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Sound")
 	TMap<FName, FName> PlayAkStates;
 };
