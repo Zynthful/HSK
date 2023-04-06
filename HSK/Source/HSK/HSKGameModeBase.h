@@ -13,5 +13,8 @@ UCLASS()
 class HSK_API AHSKGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
+	AHSKGameModeBase();
 	
 };

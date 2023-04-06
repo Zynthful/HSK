@@ -2,4 +2,9 @@
 
 
 #include "HSKGameModeBase.h"
+#include "UI/HSKHUD.h"
 
+AHSKGameModeBase::AHSKGameModeBase()
+{
+	HUDClass = AHSKHUD::StaticClass();
+}
