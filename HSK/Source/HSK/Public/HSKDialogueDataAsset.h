@@ -14,25 +14,21 @@ struct FHSKDialogueSpeaker
 {
 	GENERATED_BODY()
 
-	/* Data asset of the speaker */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	UHSKDialogueSpeakerData* SpeakerData;
+		/* Data asset of the speaker */
+		UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		UHSKDialogueSpeakerData* SpeakerData;
 
 	/* If set, will override the speaker name that is in SpeakerData */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FName SpeakerNameOverride;
+		FName SpeakerNameOverride;
 };
 
-/**
- * 
- */
-UCLASS()
-class HSK_API UHSKDialogueDataAsset : public UDataAsset
+USTRUCT(BlueprintType)
+struct FHSKDialogueLine
 {
 	GENERATED_BODY()
 
 public:
-
 	/* Developer Notes */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Developer")
 	FString DeveloperNotes;
@@ -56,8 +52,21 @@ public:
 	/* Effect on music to apply on play */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Sound")
 	FEffectOnMusic EffectOnMusic;
-	
+
 	/* AkStates to set on play*/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HSKDialogueLine|Sound")
 	TMap<FName, FName> PlayAkStates;
+};
+
+/**
+ * 
+ */
+UCLASS()
+class HSK_API UHSKDialogueDataAsset : public UDataAsset
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FHSKDialogueLine DialogueLine;
 };
