@@ -6,6 +6,11 @@
 #include "GameFramework/GameModeBase.h"
 #include "HSKGameModeBase.generated.h"
 
+class AHSKScene;
+class UHSKDialogueWidget;
+
+DECLARE_LOG_CATEGORY_EXTERN(LogScene, Log, All);
+
 /**
  * 
  */
@@ -16,5 +21,14 @@ class HSK_API AHSKGameModeBase : public AGameModeBase
 
 public:
 	AHSKGameModeBase();
-	
+
+	UFUNCTION(BlueprintCallable)
+	void PlayScene(AHSKScene* Scene);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void NotifyOnPlayScene(AHSKScene* Scene);
+
+protected:
+	UPROPERTY(BlueprintReadOnly)
+	AHSKScene* ActiveScene;
 };
