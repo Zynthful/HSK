@@ -4,10 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
-#include "Dialogue/DialogueEnums.h"
+
+#include "DialogueEnums.h"
+
 #include "HSKSceneData.generated.h"
 
-class UHSKDialogueDataAsset;
+class UHSKDialogueLineData;
 
 USTRUCT(BlueprintType)
 struct FSceneStep
@@ -18,7 +20,7 @@ struct FSceneStep
 	TEnumAsByte<EStepType> Type = EStepType::DialogueLine;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (EditCondition = "Type == EStepType::DialogueLine", EditConditionHides))
-	UHSKDialogueDataAsset* DialogueLine;
+	UHSKDialogueLineData* DialogueLine;
 };
 
 /**

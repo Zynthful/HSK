@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
-#include "Dialogue/DialogueEnums.h"
-#include "HSKDialogueDataAsset.generated.h"
+
+#include "DialogueEnums.h"
+
+#include "HSKDialogueLineData.generated.h"
 
 class UHSKDialogueSpeakerData;
 
@@ -13,7 +15,7 @@ class UHSKDialogueSpeakerData;
  * 
  */
 UCLASS()
-class HSK_API UHSKDialogueDataAsset : public UDataAsset
+class HSK_API UHSKDialogueLineData : public UDataAsset
 {
 	GENERATED_BODY()
 
